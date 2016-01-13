@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F13C8C6D1C46044E004C5B83 /* SwipeGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C8C6C1C46044E004C5B83 /* SwipeGameState.swift */; };
+		F13C8C6F1C4604DC004C5B83 /* SwipeGameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C8C6E1C4604DC004C5B83 /* SwipeGameStateTests.swift */; };
 		F14D01A11C0E72B9001ACD43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01A01C0E72B9001ACD43 /* AppDelegate.swift */; };
 		F14D01A31C0E72B9001ACD43 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F14D01A21C0E72B9001ACD43 /* GameScene.sks */; };
 		F14D01A51C0E72B9001ACD43 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01A41C0E72B9001ACD43 /* GameScene.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F13C8C6C1C46044E004C5B83 /* SwipeGameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameState.swift; sourceTree = "<group>"; };
+		F13C8C6E1C4604DC004C5B83 /* SwipeGameStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameStateTests.swift; sourceTree = "<group>"; };
 		F14D019D1C0E72B9001ACD43 /* Swiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D01A01C0E72B9001ACD43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F14D01A21C0E72B9001ACD43 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				F14D01A01C0E72B9001ACD43 /* AppDelegate.swift */,
 				F14D01A21C0E72B9001ACD43 /* GameScene.sks */,
 				F14D01A41C0E72B9001ACD43 /* GameScene.swift */,
+				F13C8C6C1C46044E004C5B83 /* SwipeGameState.swift */,
 				F14D01A61C0E72B9001ACD43 /* GameViewController.swift */,
 				F14D01A81C0E72B9001ACD43 /* Game.xcassets */,
 				F14D01AA1C0E72B9001ACD43 /* Main.storyboard */,
@@ -117,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F14D01B81C0E72B9001ACD43 /* SwiperTests.swift */,
+				F13C8C6E1C4604DC004C5B83 /* SwipeGameStateTests.swift */,
 				F14D01BA1C0E72B9001ACD43 /* Info.plist */,
 			);
 			path = SwiperTests;
@@ -266,6 +272,7 @@
 				F14D01A51C0E72B9001ACD43 /* GameScene.swift in Sources */,
 				F14D01A71C0E72B9001ACD43 /* GameViewController.swift in Sources */,
 				F14D01A11C0E72B9001ACD43 /* AppDelegate.swift in Sources */,
+				F13C8C6D1C46044E004C5B83 /* SwipeGameState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13C8C6F1C4604DC004C5B83 /* SwipeGameStateTests.swift in Sources */,
 				F14D01B91C0E72B9001ACD43 /* SwiperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +494,7 @@
 				F14D01CA1C0E72B9001ACD43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F14D01CB1C0E72B9001ACD43 /* Build configuration list for PBXNativeTarget "SwiperTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +503,7 @@
 				F14D01CD1C0E72B9001ACD43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F14D01CE1C0E72B9001ACD43 /* Build configuration list for PBXNativeTarget "SwiperUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +512,7 @@
 				F14D01D01C0E72B9001ACD43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
