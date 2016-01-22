@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SwipeGameState<DataType : Equatable> {
+struct SwipeGameState<DataType : Comparable> {
     let rows : Int
     let columns : Int
     let data : [DataType?]
@@ -39,7 +39,7 @@ struct SwipeGameState<DataType : Equatable> {
 
     func swipeDown() -> SwipeGameState {
         let indexOfBlank = blankIndex()
-        if indexOfBlank > columns {
+        if indexOfBlank >= columns {
             let indexToMove = indexOfBlank - columns
             return tap(indexToMove)
         }
@@ -100,10 +100,24 @@ struct SwipeGameState<DataType : Equatable> {
         return data.indexOf({$0 == nil})!
     }
 
+    func won() -> Bool {
+        var index = 0
+        while (index < data.count - 1) {
+            if let left = data[index], right = data[index + 1] where left > right {
+                return false
+            }
+            index += 1
+        }
+        if blankIndex() != data.count - 1 {
+            return false
+        }
+        return true
+    }
+
     func printState() -> Void {
         for i in 0 ..< rows {
             for j in 0 ..< columns {
-                if let value = data[i*rows + j] {
+                if let value = data[i*columns + j] {
                     print("\(value) ", terminator: "")
                 } else {
                     print("  ", terminator: "")
