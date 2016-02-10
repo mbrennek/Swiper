@@ -11,12 +11,10 @@ import UIKit
 struct SwipeGameTile {
     let image : UIImage
     let tileNumber : Int
-    let rect : CGRect
 
-    init(image: UIImage, tileNumber: Int, rect: CGRect) {
+    init(image: UIImage, tileNumber: Int) {
         self.image = image;
         self.tileNumber = tileNumber
-        self.rect = rect
     }
 }
 

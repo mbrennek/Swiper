@@ -55,19 +55,23 @@ class GameScene: SKScene {
         if gameState.won() {
             let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
             nodeLabel.text = "You Won!"
-            nodeLabel.fontSize = 100
-            nodeLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+            nodeLabel.fontSize = 200
+            nodeLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+            nodeLabel.zPosition = 1
             nodes.append(nodeLabel)
-
             self.addChild(nodeLabel)
+
+            let imageNode = SKSpriteNode(imageNamed: "1080pTestImage")
+            imageNode.position = nodeLabel.position
+            imageNode.zPosition = 0
+            nodes.append(imageNode)
+            self.addChild(imageNode)
         } else {
             for i in 0 ..< ROWS {
                 for j in 0 ..< COLUMNS {
                     if let gameTile = gameState.data[i*COLUMNS + j] {
                         let spriteNode = SKSpriteNode(texture: SKTexture(image: gameTile.image))
-                        spriteNode.position = CGPoint(x: gameTile.rect.midX, y: gameTile.rect.midY)
-                        spriteNode.xScale = 0.5
-                        spriteNode.yScale = 0.5
+                        spriteNode.position = positionOf(row: i, column: j, inFrame: self.frame)
                         spriteNode.zPosition = 0;
                         nodes.append(spriteNode)
                         self.addChild(spriteNode)
@@ -89,36 +93,33 @@ class GameScene: SKScene {
     }
 
     func swipeUp(recognizer: UISwipeGestureRecognizer) {
-        print("swipeUp")
         gameState = gameState?.swipeUp()
         self.updateBoardLocations()
     }
 
     func swipeDown(recognizer: UISwipeGestureRecognizer) {
-        print("swipeDown")
         gameState = gameState?.swipeDown()
         self.updateBoardLocations()
     }
 
     func swipeLeft(recognizer: UISwipeGestureRecognizer) {
-        print("swipLeft")
         gameState = gameState?.swipeLeft()
         self.updateBoardLocations()
     }
 
     func swipeRight(recognizer: UISwipeGestureRecognizer) {
-        print("swipeRight")
         gameState = gameState?.swipeRight()
         self.updateBoardLocations()
     }
 
     func doubleTap(recognizer: UITapGestureRecognizer) {
-        print("Game Reset!")
         gameState = gameState?.randomize()
         self.updateBoardLocations()
     }
 
     func loadNewGame() -> SwipeGameState<SwipeGameTile> {
+        self.removeAllChildren()
+
         let image = UIImage(imageLiteral: "1080pTestImage")
         var gameData : [SwipeGameTile?] = []
         for i in 0 ..< ROWS {
@@ -131,7 +132,7 @@ class GameScene: SKScene {
                 )
                 let tileImage = image.crop(rect)
                 let tileNumber = i * COLUMNS + j + 1
-                let gameTime = SwipeGameTile(image: tileImage, tileNumber: tileNumber, rect: rect)
+                let gameTime = SwipeGameTile(image: tileImage, tileNumber: tileNumber)
                 if (tileNumber != ROWS * COLUMNS) {
                     gameData.append(gameTime)
                 }
@@ -140,6 +141,20 @@ class GameScene: SKScene {
         }
         gameData.append(nil)
         let newGameState = SwipeGameState<SwipeGameTile>(rows: ROWS, columns: COLUMNS, data: gameData)
+
+        let backgroundTexture = SKTexture(image: image.imageWithColorOverlay(UIColor.whiteColor()))
+        let backgroundNode = SKSpriteNode(texture: backgroundTexture)
+        backgroundNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        backgroundNode.zPosition = -1
+        self.addChild(backgroundNode)
+
         return newGameState.randomize()
+    }
+
+    func positionOf(row row: Int, column: Int, inFrame frame: CGRect) -> CGPoint {
+        let tileHeight = Int(frame.height) / ROWS
+        let tileWidth = Int(frame.width) / COLUMNS
+
+        return CGPoint(x: column * tileWidth + tileWidth / 2, y: Int(frame.height) - (row * tileHeight + tileHeight / 2))
     }
 }
