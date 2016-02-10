@@ -10,8 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
 
-    var gameState : SwipeGameState<Int>?
-    var labels : [SKLabelNode] = []
+    var gameState : SwipeGameState<SwipeGameTile>?
+    var nodes : [SKNode] = []
     let ROWS = 3
     let COLUMNS = 4
 
@@ -46,28 +46,40 @@ class GameScene: SKScene {
     }
 
     func updateBoardLocations() {
-        self.removeChildrenInArray(labels)
+        self.removeChildrenInArray(nodes)
 
-        if gameState!.won() {
+        guard let gameState = gameState else {
+            return
+        }
+
+        if gameState.won() {
             let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
             nodeLabel.text = "You Won!"
             nodeLabel.fontSize = 100
             nodeLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
-            labels.append(nodeLabel)
+            nodes.append(nodeLabel)
 
             self.addChild(nodeLabel)
         } else {
             for i in 0 ..< ROWS {
                 for j in 0 ..< COLUMNS {
-                    if let value = gameState!.data[i*COLUMNS + j] {
-                        let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
-                        nodeLabel.text = "\(value)"
-                        nodeLabel.fontSize = 32
+                    if let gameTile = gameState.data[i*COLUMNS + j] {
+                        let spriteNode = SKSpriteNode(texture: SKTexture(image: gameTile.image))
+                        spriteNode.position = CGPoint(x: gameTile.rect.midX, y: gameTile.rect.midY)
+                        spriteNode.xScale = 0.5
+                        spriteNode.yScale = 0.5
+                        spriteNode.zPosition = 0;
+                        nodes.append(spriteNode)
+                        self.addChild(spriteNode)
 
+                        let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
+                        nodeLabel.text = "\(gameTile.tileNumber)"
+                        nodeLabel.fontSize = 32
                         let x = Int(self.frame.width / CGFloat(COLUMNS)) * j + 135
                         let y = Int(self.frame.height) - (Int(self.frame.height / CGFloat(ROWS)) * i + 125)
                         nodeLabel.position = CGPoint(x: x, y: y)
-                        labels.append(nodeLabel)
+                        nodeLabel.zPosition = 1
+                        nodes.append(nodeLabel)
 
                         self.addChild(nodeLabel)
                     }
@@ -106,8 +118,28 @@ class GameScene: SKScene {
         self.updateBoardLocations()
     }
 
-    func loadNewGame() -> SwipeGameState<Int> {
-        let newGameState = SwipeGameState<Int>(rows: ROWS, columns: COLUMNS, data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil])
+    func loadNewGame() -> SwipeGameState<SwipeGameTile> {
+        let image = UIImage(imageLiteral: "1080pTestImage")
+        var gameData : [SwipeGameTile?] = []
+        for i in 0 ..< ROWS {
+            for j in 0 ..< COLUMNS {
+                let rect = CGRect(
+                    x: j * (Int(self.frame.width) / COLUMNS),
+                    y: i * (Int(self.frame.height) / ROWS),
+                    width: Int(self.frame.width) / COLUMNS,
+                    height: Int(self.frame.height) / ROWS
+                )
+                let tileImage = image.crop(rect)
+                let tileNumber = i * COLUMNS + j + 1
+                let gameTime = SwipeGameTile(image: tileImage, tileNumber: tileNumber, rect: rect)
+                if (tileNumber != ROWS * COLUMNS) {
+                    gameData.append(gameTime)
+                }
+
+            }
+        }
+        gameData.append(nil)
+        let newGameState = SwipeGameState<SwipeGameTile>(rows: ROWS, columns: COLUMNS, data: gameData)
         return newGameState.randomize()
     }
 }
