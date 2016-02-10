@@ -12,6 +12,8 @@ class GameScene: SKScene {
 
     var gameState : SwipeGameState<Int>?
     var labels : [SKLabelNode] = []
+    let ROWS = 3
+    let COLUMNS = 4
 
     override func didMoveToView(view: SKView) {
 
@@ -55,15 +57,15 @@ class GameScene: SKScene {
 
             self.addChild(nodeLabel)
         } else {
-            for i in 0 ..< 3 {
-                for j in 0 ..< 4 {
-                    if let value = gameState!.data[i*4 + j] {
+            for i in 0 ..< ROWS {
+                for j in 0 ..< COLUMNS {
+                    if let value = gameState!.data[i*COLUMNS + j] {
                         let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
                         nodeLabel.text = "\(value)"
                         nodeLabel.fontSize = 32
 
-                        let x = Int(self.frame.width / 4) * j + 135
-                        let y = Int(self.frame.height) - (Int(self.frame.height / 3) * i + 125)
+                        let x = Int(self.frame.width / CGFloat(COLUMNS)) * j + 135
+                        let y = Int(self.frame.height) - (Int(self.frame.height / CGFloat(ROWS)) * i + 125)
                         nodeLabel.position = CGPoint(x: x, y: y)
                         labels.append(nodeLabel)
 
@@ -105,7 +107,7 @@ class GameScene: SKScene {
     }
 
     func loadNewGame() -> SwipeGameState<Int> {
-        let newGameState = SwipeGameState<Int>(rows: 3, columns: 4, data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil])
+        let newGameState = SwipeGameState<Int>(rows: ROWS, columns: COLUMNS, data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil])
         return newGameState.randomize()
     }
 }

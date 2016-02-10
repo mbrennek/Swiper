@@ -105,12 +105,10 @@ struct SwipeGameState<DataType : Comparable> {
     }
 
     func won() -> Bool {
-        var index = 0
-        while (index < data.count - 1) {
+        for index in 0 ..< data.count - 1 {
             if let left = data[index], right = data[index + 1] where left > right {
                 return false
             }
-            index += 1
         }
         if blankIndex() != data.count - 1 {
             return false
