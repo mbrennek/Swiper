@@ -22,8 +22,12 @@ struct SwipeGameState<DataType : Comparable> {
     func randomize() -> SwipeGameState {
         var state = SwipeGameState(rows: rows, columns: columns, data: data)
         for _ in 1 ... rows * columns * 10 {
-            let tapIndex = Int(arc4random_uniform(UInt32(rows * columns)))
-            state = state.tap(tapIndex)
+            var newState = state
+            while newState == state {
+                let tapIndex = Int(arc4random_uniform(UInt32(rows * columns)))
+                newState = state.tap(tapIndex)
+            }
+            state = newState
         }
         return state
     }
@@ -127,4 +131,18 @@ struct SwipeGameState<DataType : Comparable> {
         }
         print("------")
     }
+}
+
+extension SwipeGameState : Equatable {}
+
+func ==<T : Equatable>(lhs: SwipeGameState<T>, rhs: SwipeGameState<T>) -> Bool {
+    if lhs.rows != rhs.rows || lhs.rows != rhs.rows {
+        return false
+    }
+    for (left, right) in zip(lhs.data, rhs.data) {
+        if left != right {
+            return false
+        }
+    }
+    return true
 }
