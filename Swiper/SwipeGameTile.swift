@@ -13,7 +13,7 @@ struct SwipeGameTile {
     let tileNumber : Int
 
     init(image: UIImage, tileNumber: Int) {
-        self.image = image;
+        self.image = image
         self.tileNumber = tileNumber
     }
 }

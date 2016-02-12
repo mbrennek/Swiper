@@ -10,15 +10,15 @@ import SpriteKit
 
 class GameScene: SKScene {
 
-    var gameState : SwipeGameState<SwipeGameTile>?
+    var gameStates : [SwipeGameState<SwipeGameTile>] = []
     var nodes : [SKNode] = []
     let ROWS = 3
     let COLUMNS = 4
 
     override func didMoveToView(view: SKView) {
 
-        gameState = self.loadNewGame()
-        self.updateBoardLocations()
+        gameStates.append(self.loadNewGame())
+        self.resetBoardLocations()
 
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
         swipeUpRecognizer.direction = .Up
@@ -45,10 +45,11 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
     }
 
-    func updateBoardLocations() {
+    func resetBoardLocations() {
         self.removeChildrenInArray(nodes)
+        nodes.removeAll()
 
-        guard let gameState = gameState else {
+        guard let gameState = gameStates.last else {
             return
         }
 
@@ -58,12 +59,14 @@ class GameScene: SKScene {
             nodeLabel.fontSize = 200
             nodeLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
             nodeLabel.zPosition = 1
+            nodeLabel.userData = [ "tileNumber" : ROWS * COLUMNS + 10]
             nodes.append(nodeLabel)
             self.addChild(nodeLabel)
 
             let imageNode = SKSpriteNode(imageNamed: "1080pTestImage")
             imageNode.position = nodeLabel.position
             imageNode.zPosition = 0
+            imageNode.userData = [ "tileNumber" : ROWS * COLUMNS + 11]
             nodes.append(imageNode)
             self.addChild(imageNode)
         } else {
@@ -72,49 +75,84 @@ class GameScene: SKScene {
                     if let gameTile = gameState.data[i*COLUMNS + j] {
                         let spriteNode = SKSpriteNode(texture: SKTexture(image: gameTile.image))
                         spriteNode.position = positionOf(row: i, column: j, inFrame: self.frame)
-                        spriteNode.zPosition = 0;
+                        spriteNode.zPosition = 0
+                        spriteNode.userData = [ "tileNumber" : gameTile.tileNumber ]
                         nodes.append(spriteNode)
                         self.addChild(spriteNode)
-
-                        let nodeLabel = SKLabelNode(fontNamed: "Chalkduster")
-                        nodeLabel.text = "\(gameTile.tileNumber)"
-                        nodeLabel.fontSize = 32
-                        let x = Int(self.frame.width / CGFloat(COLUMNS)) * j + 135
-                        let y = Int(self.frame.height) - (Int(self.frame.height / CGFloat(ROWS)) * i + 125)
-                        nodeLabel.position = CGPoint(x: x, y: y)
-                        nodeLabel.zPosition = 1
-                        nodes.append(nodeLabel)
-
-                        self.addChild(nodeLabel)
                     }
                 }
             }
         }
     }
 
+    func updateBoardLocations(potentialState: SwipeGameState<SwipeGameTile>) {
+        guard let lastState = gameStates.last else {
+            return
+        }
+
+        // works in a 2x2 board... blows up on 3x4.  Something wrong with getting the game tile, or position?
+        if (lastState != potentialState) {
+            gameStates.append(potentialState)
+            let sourceIndex = potentialState.blankIndex()
+            let gameTile = lastState.data[sourceIndex]
+            let node = nodes.filter({ $0.userData!["tileNumber"] as? Int == gameTile?.tileNumber }).first
+
+            let destination = lastState.blankIndex()
+            let row = destination / COLUMNS
+            let column = destination % COLUMNS
+
+            let newPosition = self.positionOf(row: row, column: column, inFrame: self.frame)
+
+            let moveAction = SKAction.moveTo(newPosition, duration: NSTimeInterval(0.3))
+            node?.runAction(moveAction, completion: {
+                if potentialState.won() {
+                    self.resetBoardLocations()
+                }
+            })
+        }
+
+    }
+
     func swipeUp(recognizer: UISwipeGestureRecognizer) {
-        gameState = gameState?.swipeUp()
-        self.updateBoardLocations()
+        guard let lastState = gameStates.last else {
+            return
+        }
+        self.updateBoardLocations(lastState.swipeUp())
     }
 
     func swipeDown(recognizer: UISwipeGestureRecognizer) {
-        gameState = gameState?.swipeDown()
-        self.updateBoardLocations()
+        guard let lastState = gameStates.last else {
+            return
+        }
+        self.updateBoardLocations(lastState.swipeDown())
     }
 
     func swipeLeft(recognizer: UISwipeGestureRecognizer) {
-        gameState = gameState?.swipeLeft()
-        self.updateBoardLocations()
+        guard let lastState = gameStates.last else {
+            return
+        }
+        self.updateBoardLocations(lastState.swipeLeft())
     }
 
     func swipeRight(recognizer: UISwipeGestureRecognizer) {
-        gameState = gameState?.swipeRight()
-        self.updateBoardLocations()
+        guard let lastState = gameStates.last else {
+            return
+        }
+        self.updateBoardLocations(lastState.swipeRight())
     }
 
     func doubleTap(recognizer: UITapGestureRecognizer) {
-        gameState = gameState?.randomize()
-        self.updateBoardLocations()
+        guard let lastState = gameStates.last else {
+            return
+        }
+
+        gameStates.append(lastState.randomize())
+        self.resetBoardLocations()
+    }
+
+    func undoMove() {
+//        gameStates.removeLast()
+//        self.updateBoardLocations()
     }
 
     func loadNewGame() -> SwipeGameState<SwipeGameTile> {

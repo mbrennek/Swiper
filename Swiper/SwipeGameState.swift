@@ -19,7 +19,7 @@ struct SwipeGameState<DataType : Comparable> {
         self.data = data
     }
 
-    func randomize() -> SwipeGameState {
+    func randomize() -> SwipeGameState<DataType> {
         var state = SwipeGameState(rows: rows, columns: columns, data: data)
         for _ in 1 ... rows * columns * 10 {
             var newState = state
@@ -32,7 +32,7 @@ struct SwipeGameState<DataType : Comparable> {
         return state
     }
 
-    func swipeUp() -> SwipeGameState {
+    func swipeUp() -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         if indexOfBlank + columns < data.count {
             let indexToMove = indexOfBlank + columns
@@ -41,7 +41,7 @@ struct SwipeGameState<DataType : Comparable> {
         return self
     }
 
-    func swipeDown() -> SwipeGameState {
+    func swipeDown() -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         if indexOfBlank >= columns {
             let indexToMove = indexOfBlank - columns
@@ -50,7 +50,7 @@ struct SwipeGameState<DataType : Comparable> {
         return self
     }
 
-    func swipeLeft() -> SwipeGameState {
+    func swipeLeft() -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         if (indexOfBlank % columns != columns - 1) {
             let indexToMove = indexOfBlank + 1
@@ -59,7 +59,7 @@ struct SwipeGameState<DataType : Comparable> {
         return self
     }
 
-    func swipeRight() -> SwipeGameState {
+    func swipeRight() -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         if (indexOfBlank % columns != 0) {
             let indexToMove = indexOfBlank - 1
@@ -69,7 +69,7 @@ struct SwipeGameState<DataType : Comparable> {
         return self
     }
 
-    func tap(indexToMove: Int) -> SwipeGameState {
+    func tap(indexToMove: Int) -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         var valid = false
 
