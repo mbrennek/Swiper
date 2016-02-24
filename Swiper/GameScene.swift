@@ -41,10 +41,6 @@ class GameScene: SKScene {
         self.view?.addGestureRecognizer(resetRecognizer)
     }
 
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-    }
-
     func resetBoardLocations() {
         self.removeChildrenInArray(nodes)
         nodes.removeAll()
@@ -90,7 +86,6 @@ class GameScene: SKScene {
             return
         }
 
-        // works in a 2x2 board... blows up on 3x4.  Something wrong with getting the game tile, or position?
         if (lastState != potentialState) {
             gameStates.append(potentialState)
             let sourceIndex = potentialState.blankIndex()
@@ -150,9 +145,14 @@ class GameScene: SKScene {
         self.resetBoardLocations()
     }
 
-    func undoMove() {
-//        gameStates.removeLast()
-//        self.updateBoardLocations()
+    func undoMove(recognizer: UITapGestureRecognizer) {
+        if gameStates.count < 2 {
+            return
+        }
+        let previousState = gameStates[gameStates.endIndex.predecessor().predecessor()]
+        self.updateBoardLocations(previousState)
+        gameStates.removeLast()
+        gameStates.removeLast()
     }
 
     func loadNewGame() -> SwipeGameState<SwipeGameTile> {
