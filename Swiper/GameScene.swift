@@ -20,23 +20,23 @@ class GameScene: SKScene {
         gameStates.append(self.loadNewGame())
         self.resetBoardLocations()
 
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUp:")
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeUp(_:)))
         swipeUpRecognizer.direction = .Up
         self.view?.addGestureRecognizer(swipeUpRecognizer)
 
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeDown:")
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeDown(_:)))
         swipeDownRecognizer.direction = .Down
         self.view?.addGestureRecognizer(swipeDownRecognizer)
 
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeLeft(_:)))
         swipeLeftRecognizer.direction = .Left
         self.view?.addGestureRecognizer(swipeLeftRecognizer)
 
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight:")
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeRight(_:)))
         swipeRightRecognizer.direction = .Right
         self.view?.addGestureRecognizer(swipeRightRecognizer)
 
-        let resetRecognizer = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        let resetRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameScene.doubleTap(_:)))
         resetRecognizer.numberOfTapsRequired = 2
         self.view?.addGestureRecognizer(resetRecognizer)
     }
