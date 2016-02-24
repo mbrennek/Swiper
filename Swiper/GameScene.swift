@@ -191,7 +191,7 @@ class GameScene: SKScene, ReactToMotionEvent {
             }
         }
         gameData.append(nil)
-        let newGameState = SwipeGameState<SwipeGameTile>(rows: ROWS, columns: COLUMNS, data: gameData)
+        let newGameState = try! SwipeGameState<SwipeGameTile>(rows: ROWS, columns: COLUMNS, data: gameData)
 
         let backgroundTexture = SKTexture(image: image.imageWithColorOverlay(UIColor.whiteColor()))
         let backgroundNode = SKSpriteNode(texture: backgroundTexture)

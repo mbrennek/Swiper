@@ -11,11 +11,11 @@ import XCTest
 
 class SwipeGameStateTests: XCTestCase {
 
-    func testInit() {
+    func testInitStateCopy() {
         let rows = 2
         let cols = 2
         let data : [Int?] = [1, 2, 3, nil]
-        let gameState = SwipeGameState<Int>(rows: rows, columns: cols, data: data)
+        let gameState = try! SwipeGameState<Int>(rows: rows, columns: cols, data: data)
 
         XCTAssertEqual(rows, gameState.rows)
         XCTAssertEqual(cols, gameState.columns)
@@ -24,4 +24,53 @@ class SwipeGameStateTests: XCTestCase {
         }
     }
 
+    func testInitCountFail() {
+        let rows = 2
+        let cols = 2
+
+        let tooManyItems : [Int?] = [1, 2, 3, 4, nil]
+        XCTAssertThrowsError(try SwipeGameState<Int>(rows: rows, columns: cols, data: tooManyItems))
+
+        let tooFewItems : [Int?] = [1, 2, nil]
+        XCTAssertThrowsError(try SwipeGameState<Int>(rows: rows, columns: cols, data: tooFewItems))
+
+        let justRightItems : [Int?] = [1, 2, 3, nil]
+        do {
+            let _ = try SwipeGameState<Int>(rows: rows, columns: cols, data: justRightItems)
+        } catch {
+            XCTFail("this init call should not have failed")
+        }
+    }
+
+    func testInitTooManyNilsFail() {
+        let rows = 2
+        let cols = 2
+
+        let tooManyNils : [Int?] = [1, 2, nil, nil]
+        XCTAssertThrowsError(try SwipeGameState<Int>(rows: rows, columns: cols, data: tooManyNils))
+    }
+
+    func testInitNoNilFail() {
+        let rows = 2
+        let cols = 2
+
+        let noNilData : [Int?] = [1, 2, 3, 4]
+        XCTAssertThrowsError(try SwipeGameState<Int>(rows: rows, columns: cols, data: noNilData))
+    }
+
+    func testRandomize() {
+        let rows = 3
+        let cols = 4
+        let data : [Int?] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil]
+        let gameState = try! SwipeGameState<Int>(rows: rows, columns: cols, data: data)
+        let randomState = gameState.randomize()
+
+        XCTAssertEqual(randomState.data.count, data.count)
+
+        // there is a non-zero chance that these asserts fail, and that the randomized
+        // results are a winning puzzle.  If this test EVER asserts, then I need to
+        // come up with a better randomization strategy.
+        XCTAssertNotEqual(gameState, randomState)
+        XCTAssertFalse(randomState.won())
+    }
 }

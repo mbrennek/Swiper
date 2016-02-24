@@ -8,19 +8,45 @@
 
 import Foundation
 
+enum GameStateError: ErrorType {
+    case IncorrectCountOfDataElements
+    case NoEmptyTile
+    case TooManyEmptyTiles
+}
+
 struct SwipeGameState<DataType : Comparable> {
     let rows : Int
     let columns : Int
     let data : [DataType?]
 
-    init(rows: Int, columns: Int, data: [DataType?]) {
+    init(rows: Int, columns: Int, data: [DataType?]) throws {
         self.rows = rows
         self.columns = columns
         self.data = data
+
+        if data.count != rows * columns {
+            throw GameStateError.IncorrectCountOfDataElements
+        }
+
+        var blanksFound = 0
+        for item in data {
+            if item == nil {
+                blanksFound += 1
+            }
+        }
+
+        if blanksFound < 1 {
+            throw GameStateError.NoEmptyTile
+        }
+
+        if blanksFound > 1 {
+            throw GameStateError.TooManyEmptyTiles
+        }
+
     }
 
     func randomize() -> SwipeGameState<DataType> {
-        var state = SwipeGameState(rows: rows, columns: columns, data: data)
+        var state = try! SwipeGameState(rows: rows, columns: columns, data: data)
         for _ in 1 ... rows * columns * 10 {
             var newState = state
             while newState == state {
@@ -94,7 +120,7 @@ struct SwipeGameState<DataType : Comparable> {
         if valid {
             var replacementData = data
             swap(&replacementData[indexOfBlank], &replacementData[indexToMove])
-            return SwipeGameState(rows: rows, columns: columns, data: replacementData)
+            return try! SwipeGameState(rows: rows, columns: columns, data: replacementData)
         }
 
         return self
