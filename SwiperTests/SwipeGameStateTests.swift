@@ -73,4 +73,19 @@ class SwipeGameStateTests: XCTestCase {
         XCTAssertNotEqual(gameState, randomState)
         XCTAssertFalse(randomState.won())
     }
+
+    func testSwipeUp() {
+        let rows = 3
+        let cols = 4
+        let bottomRowBlankData : [Int?] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, nil]
+        let bottomRowBlankGameState = try! SwipeGameState<Int>(rows: rows, columns: cols, data: bottomRowBlankData)
+        let middleRowBlankData : [Int?] = [1, 2, 3, 4, 5, 6, 7, nil, 9, 10, 11, 8]
+        let middleRowBlankGameState = try! SwipeGameState<Int>(rows: rows, columns: cols, data: middleRowBlankData)
+        let topRowBlankData : [Int?] = [1, 2, 3, nil, 5, 6, 7, 4, 9, 10, 11, 8]
+        let topRowBlankGameState = try! SwipeGameState<Int>(rows: rows, columns: cols, data: topRowBlankData)
+
+        XCTAssertEqual(topRowBlankGameState.swipeUp(), middleRowBlankGameState)
+        XCTAssertEqual(middleRowBlankGameState.swipeUp(), bottomRowBlankGameState)
+        XCTAssertEqual(bottomRowBlankGameState.swipeUp(), bottomRowBlankGameState)
+    }
 }
