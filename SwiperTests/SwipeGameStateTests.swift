@@ -11,19 +11,17 @@ import XCTest
 
 class SwipeGameStateTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    func testInit() {
+        let rows = 2
+        let cols = 2
+        let data : [Int?] = [1, 2, 3, nil]
+        let gameState = SwipeGameState<Int>(rows: rows, columns: cols, data: data)
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertEqual(rows, gameState.rows)
+        XCTAssertEqual(cols, gameState.columns)
+        for (left, right) in zip(data, gameState.data) {
+            XCTAssertEqual(left, right)
+        }
     }
 
 }

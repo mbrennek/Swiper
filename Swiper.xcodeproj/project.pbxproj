@@ -19,8 +19,8 @@
 		F14D01A91C0E72B9001ACD43 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D01A81C0E72B9001ACD43 /* Game.xcassets */; };
 		F14D01AC1C0E72B9001ACD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AA1C0E72B9001ACD43 /* Main.storyboard */; };
 		F14D01AE1C0E72B9001ACD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */; };
-		F14D01B91C0E72B9001ACD43 /* SwiperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01B81C0E72B9001ACD43 /* SwiperTests.swift */; };
 		F14D01C41C0E72B9001ACD43 /* SwiperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */; };
+		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,11 +56,11 @@
 		F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14D01AF1C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14D01B41C0E72B9001ACD43 /* SwiperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14D01B81C0E72B9001ACD43 /* SwiperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperTests.swift; sourceTree = "<group>"; };
 		F14D01BA1C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14D01BF1C0E72B9001ACD43 /* SwiperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperUITests.swift; sourceTree = "<group>"; };
 		F14D01C51C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +130,8 @@
 		F14D01B71C0E72B9001ACD43 /* SwiperTests */ = {
 			isa = PBXGroup;
 			children = (
-				F14D01B81C0E72B9001ACD43 /* SwiperTests.swift */,
 				F13C8C6E1C4604DC004C5B83 /* SwipeGameStateTests.swift */,
+				F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */,
 				F14D01BA1C0E72B9001ACD43 /* Info.plist */,
 			);
 			path = SwiperTests;
@@ -292,8 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */,
 				F13C8C6F1C4604DC004C5B83 /* SwipeGameStateTests.swift in Sources */,
-				F14D01B91C0E72B9001ACD43 /* SwiperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

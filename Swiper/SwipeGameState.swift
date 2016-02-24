@@ -13,7 +13,7 @@ struct SwipeGameState<DataType : Comparable> {
     let columns : Int
     let data : [DataType?]
 
-    init(rows : Int, columns: Int, data : [DataType?]) {
+    init(rows: Int, columns: Int, data: [DataType?]) {
         self.rows = rows
         self.columns = columns
         self.data = data
@@ -116,19 +116,6 @@ struct SwipeGameState<DataType : Comparable> {
         return true
     }
 
-    func printState() -> Void {
-        for i in 0 ..< rows {
-            for j in 0 ..< columns {
-                if let value = data[i*columns + j] {
-                    print("\(value) ", terminator: "")
-                } else {
-                    print("  ", terminator: "")
-                }
-            }
-            print("\n")
-        }
-        print("------")
-    }
 }
 
 extension SwipeGameState : Equatable {}
