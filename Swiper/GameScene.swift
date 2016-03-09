@@ -17,8 +17,8 @@ class GameScene: SKScene, ReactToMotionEvent {
 
     var gameStates : [SwipeGameState<SwipeGameTile>] = []
     var nodes : [SKNode] = []
-    let ROWS = 3
-    let COLUMNS = 4
+    let ROWS = 2
+    let COLUMNS = 3
 
     override func didMoveToView(view: SKView) {
 
