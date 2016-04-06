@@ -117,7 +117,7 @@ class GameScene: SKScene, ReactToMotionEvent {
     }
 
     func motionUpdate(motion: GCMotion) {
-        // todo determine good userAcceleration values to trigger undoMove()
+        // @TODO determine good userAcceleration values to trigger undoMove()
 //        print("\(motion.userAcceleration.x) \(motion.userAcceleration.y) \(motion.userAcceleration.z)")
     }
 
