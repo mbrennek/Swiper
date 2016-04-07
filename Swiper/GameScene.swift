@@ -25,8 +25,12 @@ class GameScene: SKScene, ReactToMotionEvent {
 
     var gameStates : [SwipeGameState<SwipeGameTile>] = []
     var nodes : [SKNode] = []
-    let ROWS = 2
-    let COLUMNS = 3
+    var difficulty = GameDifficulty.Beginner {
+        didSet {
+            self.gameStates = [self.loadNewGame()]
+            self.resetBoardLocations()
+        }
+    }
 
     override func didMoveToView(view: SKView) {
 
@@ -71,20 +75,20 @@ class GameScene: SKScene, ReactToMotionEvent {
             nodeLabel.fontSize = 200
             nodeLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
             nodeLabel.zPosition = 1
-            nodeLabel.userData = [ "tileNumber" : ROWS * COLUMNS + 10]
+            nodeLabel.userData = [ "tileNumber" : difficulty.rows() * difficulty.columns() + 10]
             nodes.append(nodeLabel)
             self.addChild(nodeLabel)
 
             let imageNode = SKSpriteNode(imageNamed: "1080pTestImage")
             imageNode.position = nodeLabel.position
             imageNode.zPosition = 0
-            imageNode.userData = [ "tileNumber" : ROWS * COLUMNS + 11]
+            imageNode.userData = [ "tileNumber" : difficulty.rows() * difficulty.columns() + 11]
             nodes.append(imageNode)
             self.addChild(imageNode)
         } else {
-            for i in 0 ..< ROWS {
-                for j in 0 ..< COLUMNS {
-                    if let gameTile = gameState.data[i*COLUMNS + j] {
+            for i in 0 ..< difficulty.rows() {
+                for j in 0 ..< difficulty.columns() {
+                    if let gameTile = gameState.data[i*difficulty.columns() + j] {
                         let spriteNode = SKSpriteNode(texture: SKTexture(image: gameTile.image))
                         spriteNode.position = positionOf(row: i, column: j, inFrame: self.frame)
                         spriteNode.zPosition = 0
@@ -109,8 +113,8 @@ class GameScene: SKScene, ReactToMotionEvent {
             let node = nodes.filter({ $0.userData!["tileNumber"] as? Int == gameTile?.tileNumber }).first
 
             let destination = lastState.blankIndex()
-            let row = destination / COLUMNS
-            let column = destination % COLUMNS
+            let row = destination / difficulty.columns()
+            let column = destination % difficulty.columns()
 
             let newPosition = self.positionOf(row: row, column: column, inFrame: self.frame)
 
@@ -181,25 +185,25 @@ class GameScene: SKScene, ReactToMotionEvent {
 
         let image = UIImage(imageLiteral: "1080pTestImage")
         var gameData : [SwipeGameTile?] = []
-        for i in 0 ..< ROWS {
-            for j in 0 ..< COLUMNS {
+        for i in 0 ..< difficulty.rows() {
+            for j in 0 ..< difficulty.columns() {
                 let rect = CGRect(
-                    x: j * (Int(self.frame.width) / COLUMNS),
-                    y: i * (Int(self.frame.height) / ROWS),
-                    width: Int(self.frame.width) / COLUMNS,
-                    height: Int(self.frame.height) / ROWS
+                    x: j * (Int(self.frame.width) / difficulty.columns()),
+                    y: i * (Int(self.frame.height) / difficulty.rows()),
+                    width: Int(self.frame.width) / difficulty.columns(),
+                    height: Int(self.frame.height) / difficulty.rows()
                 )
                 let tileImage = image.crop(rect)
-                let tileNumber = i * COLUMNS + j + 1
+                let tileNumber = i * difficulty.columns() + j + 1
                 let gameTime = SwipeGameTile(image: tileImage, tileNumber: tileNumber)
-                if (tileNumber != ROWS * COLUMNS) {
+                if (tileNumber != difficulty.rows() * difficulty.columns()) {
                     gameData.append(gameTime)
                 }
 
             }
         }
         gameData.append(nil)
-        let newGameState = try! SwipeGameState<SwipeGameTile>(rows: ROWS, columns: COLUMNS, data: gameData)
+        let newGameState = try! SwipeGameState<SwipeGameTile>(rows: difficulty.rows(), columns: difficulty.columns(), data: gameData)
 
         let backgroundTexture = SKTexture(image: image.imageWithColorOverlay(UIColor.whiteColor()))
         let backgroundNode = SKSpriteNode(texture: backgroundTexture)
@@ -211,8 +215,8 @@ class GameScene: SKScene, ReactToMotionEvent {
     }
 
     func positionOf(row row: Int, column: Int, inFrame frame: CGRect) -> CGPoint {
-        let tileHeight = Int(frame.height) / ROWS
-        let tileWidth = Int(frame.width) / COLUMNS
+        let tileHeight = Int(frame.height) / difficulty.rows()
+        let tileWidth = Int(frame.width) / difficulty.columns()
 
         return CGPoint(x: column * tileWidth + tileWidth / 2, y: Int(frame.height) - (row * tileHeight + tileHeight / 2))
     }

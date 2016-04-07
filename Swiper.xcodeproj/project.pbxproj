@@ -20,7 +20,9 @@
 		F14D01AC1C0E72B9001ACD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AA1C0E72B9001ACD43 /* Main.storyboard */; };
 		F14D01AE1C0E72B9001ACD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */; };
 		F14D01C41C0E72B9001ACD43 /* SwiperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */; };
+		F183E2E31CB5EA5B00A589B4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */; };
 		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
+		F1FCB9B41CB5F7A00096AE6D /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,9 @@
 		F14D01BF1C0E72B9001ACD43 /* SwiperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiperUITests.swift; sourceTree = "<group>"; };
 		F14D01C51C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
+		F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,9 +121,11 @@
 				F14D01A21C0E72B9001ACD43 /* GameScene.sks */,
 				F14D01A41C0E72B9001ACD43 /* GameScene.swift */,
 				F14D01A61C0E72B9001ACD43 /* GameViewController.swift */,
+				F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */,
 				F14D01AF1C0E72B9001ACD43 /* Info.plist */,
 				F14D01AA1C0E72B9001ACD43 /* Main.storyboard */,
 				F13C8C6C1C46044E004C5B83 /* SwipeGameState.swift */,
+				F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */,
 				F10EAF761C6AD2A800BD24AB /* SwipeGameTile.swift */,
 				F10EAF781C6AD93900BD24AB /* UIImage+Crop.swift */,
 				F10EAF7A1C6AF4EE00BD24AB /* UIImage+ColorOverlay.swift */,
@@ -279,12 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F183E2E31CB5EA5B00A589B4 /* MainMenuViewController.swift in Sources */,
 				F10EAF7B1C6AF4EE00BD24AB /* UIImage+ColorOverlay.swift in Sources */,
 				F14D01A51C0E72B9001ACD43 /* GameScene.swift in Sources */,
 				F10EAF771C6AD2A800BD24AB /* SwipeGameTile.swift in Sources */,
 				F14D01A71C0E72B9001ACD43 /* GameViewController.swift in Sources */,
 				F14D01A11C0E72B9001ACD43 /* AppDelegate.swift in Sources */,
 				F13C8C6D1C46044E004C5B83 /* SwipeGameState.swift in Sources */,
+				F1FCB9B41CB5F7A00096AE6D /* GameDifficulty.swift in Sources */,
 				F10EAF791C6AD93900BD24AB /* UIImage+Crop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

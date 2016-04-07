@@ -9,6 +9,10 @@
 import UIKit
 import GameController
 
+private extension Selector {
+    static let setupControllers = #selector(AppDelegate.setupControllers(_:))
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(setupControllers(_:)), name: GCControllerDidConnectNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(setupControllers(_:)), name: GCControllerDidDisconnectNotification, object: nil)
+        notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidConnectNotification, object: nil)
+        notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidDisconnectNotification, object: nil)
         GCController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
 
         }

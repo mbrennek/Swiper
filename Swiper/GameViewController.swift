@@ -10,10 +10,14 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    var difficulty = GameDifficulty.Beginner
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let scene = GameScene(fileNamed: "GameScene") {
+            scene.difficulty = difficulty
+
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
