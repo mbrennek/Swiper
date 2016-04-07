@@ -13,6 +13,14 @@ protocol ReactToMotionEvent {
     func motionUpdate(motion: GCMotion) -> Void
 }
 
+private extension Selector {
+    static let swipeUp = #selector(GameScene.swipeUp(_:))
+    static let swipeDown = #selector(GameScene.swipeDown(_:))
+    static let swipeLeft = #selector(GameScene.swipeLeft(_:))
+    static let swipeRight = #selector(GameScene.swipeRight(_:))
+    static let doubleTap = #selector(GameScene.doubleTap(_:))
+}
+
 class GameScene: SKScene, ReactToMotionEvent {
 
     var gameStates : [SwipeGameState<SwipeGameTile>] = []
@@ -25,23 +33,23 @@ class GameScene: SKScene, ReactToMotionEvent {
         gameStates.append(self.loadNewGame())
         self.resetBoardLocations()
 
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeUp(_:)))
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeUp)
         swipeUpRecognizer.direction = .Up
         self.view?.addGestureRecognizer(swipeUpRecognizer)
 
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeDown(_:)))
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeDown)
         swipeDownRecognizer.direction = .Down
         self.view?.addGestureRecognizer(swipeDownRecognizer)
 
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeLeft(_:)))
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeLeft)
         swipeLeftRecognizer.direction = .Left
         self.view?.addGestureRecognizer(swipeLeftRecognizer)
 
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipeRight(_:)))
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeRight)
         swipeRightRecognizer.direction = .Right
         self.view?.addGestureRecognizer(swipeRightRecognizer)
 
-        let resetRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameScene.doubleTap(_:)))
+        let resetRecognizer = UITapGestureRecognizer(target: self, action: .doubleTap)
         resetRecognizer.numberOfTapsRequired = 2
         self.view?.addGestureRecognizer(resetRecognizer)
 
