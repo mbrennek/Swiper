@@ -8,5 +8,7 @@
  * Sounds on tile slide/win
  * Winner animation
  * Pause screen? Or just let them back out to the menu?
+ * Add crash reporting/analytics
+ * Beta?
  * Website/publicity
 
