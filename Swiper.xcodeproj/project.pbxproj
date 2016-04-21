@@ -16,7 +16,6 @@
 		F14D01A31C0E72B9001ACD43 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F14D01A21C0E72B9001ACD43 /* GameScene.sks */; };
 		F14D01A51C0E72B9001ACD43 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01A41C0E72B9001ACD43 /* GameScene.swift */; };
 		F14D01A71C0E72B9001ACD43 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01A61C0E72B9001ACD43 /* GameViewController.swift */; };
-		F14D01A91C0E72B9001ACD43 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D01A81C0E72B9001ACD43 /* Game.xcassets */; };
 		F14D01AC1C0E72B9001ACD43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AA1C0E72B9001ACD43 /* Main.storyboard */; };
 		F14D01AE1C0E72B9001ACD43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */; };
 		F14D01C41C0E72B9001ACD43 /* SwiperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */; };
@@ -24,6 +23,8 @@
 		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
 		F1EFB6F51CC85B4D0075FF37 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */; };
 		F1EFB6F61CC85B4D0075FF37 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */; };
+		F1EFB7001CC8644C0075FF37 /* 1080pTestImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1EFB6F91CC8642A0075FF37 /* 1080pTestImage.png */; settings = {ASSET_TAGS = (bundled, ); }; };
+		F1EFB7021CC86E710075FF37 /* 2nd1080pImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F1EFB7011CC86E710075FF37 /* 2nd1080pImage.png */; settings = {ASSET_TAGS = (bundled, ); }; };
 		F1FCB9B41CB5F7A00096AE6D /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +56,6 @@
 		F14D01A21C0E72B9001ACD43 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		F14D01A41C0E72B9001ACD43 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F14D01A61C0E72B9001ACD43 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		F14D01A81C0E72B9001ACD43 /* Game.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Game.xcassets; sourceTree = "<group>"; };
 		F14D01AB1C0E72B9001ACD43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14D01AF1C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
 		F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendor/Fabric.framework; sourceTree = SOURCE_ROOT; };
 		F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Vendor/Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		F1EFB6F91CC8642A0075FF37 /* 1080pTestImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080pTestImage.png; sourceTree = "<group>"; };
+		F1EFB7011CC86E710075FF37 /* 2nd1080pImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2nd1080pImage.png; sourceTree = "<group>"; };
 		F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				F14D01B71C0E72B9001ACD43 /* SwiperTests */,
 				F14D01C21C0E72B9001ACD43 /* SwiperUITests */,
 				F14D019E1C0E72B9001ACD43 /* Products */,
+				F1EFB6F71CC8642A0075FF37 /* Raw Assets */,
 				F1EFB6F21CC85B350075FF37 /* Vendor */,
 			);
 			sourceTree = "<group>";
@@ -124,7 +127,6 @@
 			children = (
 				F14D01A01C0E72B9001ACD43 /* AppDelegate.swift */,
 				F14D01AD1C0E72B9001ACD43 /* Assets.xcassets */,
-				F14D01A81C0E72B9001ACD43 /* Game.xcassets */,
 				F14D01A21C0E72B9001ACD43 /* GameScene.sks */,
 				F14D01A41C0E72B9001ACD43 /* GameScene.swift */,
 				F14D01A61C0E72B9001ACD43 /* GameViewController.swift */,
@@ -166,6 +168,31 @@
 				F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F1EFB6F71CC8642A0075FF37 /* Raw Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F1EFB6F81CC8642A0075FF37 /* BundledPuzzles */,
+				F1EFB6FA1CC8642A0075FF37 /* NaturePuzzles */,
+			);
+			path = "Raw Assets";
+			sourceTree = "<group>";
+		};
+		F1EFB6F81CC8642A0075FF37 /* BundledPuzzles */ = {
+			isa = PBXGroup;
+			children = (
+				F1EFB6F91CC8642A0075FF37 /* 1080pTestImage.png */,
+				F1EFB7011CC86E710075FF37 /* 2nd1080pImage.png */,
+			);
+			path = BundledPuzzles;
+			sourceTree = "<group>";
+		};
+		F1EFB6FA1CC8642A0075FF37 /* NaturePuzzles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NaturePuzzles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +257,11 @@
 		F14D01951C0E72B9001ACD43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					bundled,
+					nature,
+					previews,
+				);
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Matt Brenneke";
@@ -274,9 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14D01AC1C0E72B9001ACD43 /* Main.storyboard in Resources */,
+				F1EFB7001CC8644C0075FF37 /* 1080pTestImage.png in Resources */,
 				F14D01A31C0E72B9001ACD43 /* GameScene.sks in Resources */,
 				F14D01AE1C0E72B9001ACD43 /* Assets.xcassets in Resources */,
-				F14D01A91C0E72B9001ACD43 /* Game.xcassets in Resources */,
+				F1EFB7021CC86E710075FF37 /* 2nd1080pImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +484,7 @@
 				);
 				INFOPLIST_FILE = Swiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = bundled;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unspunproductions.Swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -470,6 +504,7 @@
 				);
 				INFOPLIST_FILE = Swiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = bundled;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unspunproductions.Swiper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -31,6 +31,7 @@ class GameScene: SKScene, ReactToMotionEvent {
             self.resetBoardLocations()
         }
     }
+    var imageName = "1080pTestImage"
 
     override func didMoveToView(view: SKView) {
 
@@ -79,7 +80,7 @@ class GameScene: SKScene, ReactToMotionEvent {
             nodes.append(nodeLabel)
             self.addChild(nodeLabel)
 
-            let imageNode = SKSpriteNode(imageNamed: "1080pTestImage")
+            let imageNode = SKSpriteNode(imageNamed: imageName)
             imageNode.position = nodeLabel.position
             imageNode.zPosition = 0
             imageNode.userData = [ "tileNumber" : difficulty.rows() * difficulty.columns() + 11]
@@ -183,7 +184,7 @@ class GameScene: SKScene, ReactToMotionEvent {
     func loadNewGame() -> SwipeGameState<SwipeGameTile> {
         self.removeAllChildren()
 
-        let image = UIImage(imageLiteral: "1080pTestImage")
+        let image = UIImage(imageLiteral: imageName)
         var gameData : [SwipeGameTile?] = []
         for i in 0 ..< difficulty.rows() {
             for j in 0 ..< difficulty.columns() {
