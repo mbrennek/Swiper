@@ -22,6 +22,8 @@
 		F14D01C41C0E72B9001ACD43 /* SwiperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D01C31C0E72B9001ACD43 /* SwiperUITests.swift */; };
 		F183E2E31CB5EA5B00A589B4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */; };
 		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
+		F1EFB6F51CC85B4D0075FF37 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */; };
+		F1EFB6F61CC85B4D0075FF37 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */; };
 		F1FCB9B41CB5F7A00096AE6D /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		F14D01C51C0E72B9001ACD43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
+		F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendor/Fabric.framework; sourceTree = SOURCE_ROOT; };
+		F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Vendor/Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		F1FCB9B31CB5F7A00096AE6D /* GameDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1EFB6F61CC85B4D0075FF37 /* Crashlytics.framework in Frameworks */,
+				F1EFB6F51CC85B4D0075FF37 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +105,7 @@
 				F14D01B71C0E72B9001ACD43 /* SwiperTests */,
 				F14D01C21C0E72B9001ACD43 /* SwiperUITests */,
 				F14D019E1C0E72B9001ACD43 /* Products */,
+				F1EFB6F21CC85B350075FF37 /* Vendor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +157,15 @@
 				F14D01C51C0E72B9001ACD43 /* Info.plist */,
 			);
 			path = SwiperUITests;
+			sourceTree = "<group>";
+		};
+		F1EFB6F21CC85B350075FF37 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */,
+				F1EFB6F41CC85B4D0075FF37 /* Crashlytics.framework */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +445,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+				);
 				INFOPLIST_FILE = Swiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unspunproductions.Swiper;
@@ -444,6 +464,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+				);
 				INFOPLIST_FILE = Swiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unspunproductions.Swiper;
