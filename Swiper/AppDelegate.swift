@@ -8,6 +8,8 @@
 
 import UIKit
 import GameController
+import Fabric
+import Crashlytics
 
 private extension Selector {
     static let setupControllers = #selector(AppDelegate.setupControllers(_:))
@@ -20,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var motionDelegate: ReactToMotionEvent?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics.self])
+
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidConnectNotification, object: nil)
         notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidDisconnectNotification, object: nil)
