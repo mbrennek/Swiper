@@ -28,7 +28,7 @@ extension UIImage {
         CGContextScaleCTM(context, 1.0, -1.0)
 
         // set overlay
-        CGContextSetBlendMode(context, .Color)
+        CGContextSetBlendMode(context, .HardLight)
         CGContextClipToMask(context, rect, self.CGImage)
         CGContextSetFillColorWithColor(context, colorOverlay.CGColor)
         CGContextFillRect(context, rect)

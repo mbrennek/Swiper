@@ -21,19 +21,19 @@ class GameViewController: UIViewController {
         // TODO: probably not the right place to be managing resource requests
         // TODO: get the tag of the currently selected resource
         // TODO: conditionally check if the resource is available first, show a loading screen if it isn't
-        bundledResourceRequest = NSBundleResourceRequest.init(tags: [ "bundled" ])
+        bundledResourceRequest = NSBundleResourceRequest.init(tags: [ "sanfran" ])
         bundledResourceRequest?.beginAccessingResourcesWithCompletionHandler({ (error) in
             if let error = error {
-                // handle Error
+                // TODO: handle Error
                 Crashlytics.self().recordError(error)
                 print(error)
             } else {
                 self.bundledResourcesAvailable = true
-                let images = self.bundledResourceRequest?.bundle.pathsForResourcesOfType("png", inDirectory: nil)
-                print(images)
+                let images = self.bundledResourceRequest?.bundle.pathsForResourcesOfType("jpg", inDirectory: nil)
 
                 if let scene = GameScene(fileNamed: "GameScene") {
-                    scene.imageName = (images?.last)!
+                    let index = Int(arc4random_uniform(UInt32(images!.count)))
+                    scene.imageName = (images?[index])!
                     scene.difficulty = self.difficulty
 
                     // Configure the view.
