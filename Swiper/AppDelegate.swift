@@ -27,9 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidConnectNotification, object: nil)
         notificationCenter.addObserver(self, selector: .setupControllers, name: GCControllerDidDisconnectNotification, object: nil)
-        GCController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
-
-        }
+//        GCController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
+//
+//        }
         return true
     }
 

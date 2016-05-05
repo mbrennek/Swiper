@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         // TODO: probably not the right place to be managing resource requests
         // TODO: get the tag of the currently selected resource
         // TODO: conditionally check if the resource is available first, show a loading screen if it isn't
-        bundledResourceRequest = NSBundleResourceRequest.init(tags: [ "sanfran" ])
+        bundledResourceRequest = NSBundleResourceRequest.init(tags: [ "bundled", "nature", "sanfran" ])
         bundledResourceRequest?.beginAccessingResourcesWithCompletionHandler({ (error) in
             if let error = error {
                 // TODO: handle Error
