@@ -9,10 +9,6 @@
 import SpriteKit
 import GameController
 
-protocol ReactToMotionEvent {
-    func motionUpdate(motion: GCMotion) -> Void
-}
-
 private extension Selector {
     static let swipeUp = #selector(GameScene.swipeUp(_:))
     static let swipeDown = #selector(GameScene.swipeDown(_:))
@@ -21,7 +17,7 @@ private extension Selector {
     static let doubleTap = #selector(GameScene.doubleTap(_:))
 }
 
-class GameScene: SKScene, ReactToMotionEvent {
+class GameScene: SKScene {
 
     var gameStates : [SwipeGameState<SwipeGameTile>] = []
     var nodes : [SKNode] = []
@@ -57,9 +53,6 @@ class GameScene: SKScene, ReactToMotionEvent {
         let resetRecognizer = UITapGestureRecognizer(target: self, action: .doubleTap)
         resetRecognizer.numberOfTapsRequired = 2
         self.view?.addGestureRecognizer(resetRecognizer)
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.motionDelegate = self
     }
 
     func resetBoardLocations() {
@@ -127,11 +120,6 @@ class GameScene: SKScene, ReactToMotionEvent {
             })
         }
 
-    }
-
-    func motionUpdate(motion: GCMotion) {
-        // @TODO determine good userAcceleration values to trigger undoMove()
-//        print("\(motion.userAcceleration.x) \(motion.userAcceleration.y) \(motion.userAcceleration.z)")
     }
 
     func swipeUp(recognizer: UISwipeGestureRecognizer) {
