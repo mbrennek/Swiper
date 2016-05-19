@@ -8,21 +8,10 @@
 
 import Foundation
 
-enum GameDifficulty {
-    case Beginner
-    case Intermediate
-    case Advanced
-
-    func segueIdentifier() -> String {
-        switch self {
-        case .Beginner:
-            return "beginnerSegue"
-        case .Intermediate:
-            return "intermediateSegue"
-        case .Advanced:
-            return "advancedSegue"
-        }
-    }
+enum GameDifficulty: String {
+    case Beginner = "beginnerSegue"
+    case Intermediate = "intermediateSegue"
+    case Advanced = "advancedSegue"
 
     func rows() -> Int {
         switch self {
