@@ -31,9 +31,9 @@ class GameViewController: UIViewController {
                 self.bundledResourcesAvailable = true
                 let images = self.bundledResourceRequest?.bundle.pathsForResourcesOfType("jpg", inDirectory: nil)
 
-                if let scene = GameScene(fileNamed: "GameScene") {
-                    let index = Int(arc4random_uniform(UInt32(images!.count)))
-                    scene.imageName = (images?[index])!
+                if let scene = GameScene(fileNamed: "GameScene"), images = images where images.count > 0 {
+                    let index = Int(arc4random_uniform(UInt32(images.count)))
+                    scene.imageName = images[index]
                     scene.difficulty = self.difficulty
 
                     // Configure the view.
