@@ -46,6 +46,8 @@
 		F18AD5BE1CFFB9BA0027F638 /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AD5BD1CFFB9BA0027F638 /* ThemeSelectionViewController.swift */; };
 		F18AD5C01CFFC9760027F638 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AD5BF1CFFC9760027F638 /* ThemeCell.swift */; };
 		F18AD5C31CFFD40D0027F638 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5C21CFFD40D0027F638 /* nature.jpg */; };
+		F18AD5C61CFFDF360027F638 /* basic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5C41CFFDF360027F638 /* basic.jpg */; };
+		F18AD5C71CFFDF360027F638 /* sf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5C51CFFDF360027F638 /* sf.jpg */; };
 		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
 		F1A3714A1CDAE1CC00E3929A /* UIImage+Grayscale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A371491CDAE1CC00E3929A /* UIImage+Grayscale.swift */; };
 		F1EFB6F51CC85B4D0075FF37 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */; };
@@ -116,6 +118,8 @@
 		F18AD5BD1CFFB9BA0027F638 /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
 		F18AD5BF1CFFC9760027F638 /* ThemeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		F18AD5C21CFFD40D0027F638 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
+		F18AD5C41CFFDF360027F638 /* basic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = basic.jpg; sourceTree = "<group>"; };
+		F18AD5C51CFFDF360027F638 /* sf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sf.jpg; sourceTree = "<group>"; };
 		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
 		F1A371491CDAE1CC00E3929A /* UIImage+Grayscale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscale.swift"; sourceTree = "<group>"; };
 		F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendor/Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -271,6 +275,8 @@
 		F18AD5C11CFFD40D0027F638 /* Previews */ = {
 			isa = PBXGroup;
 			children = (
+				F18AD5C41CFFDF360027F638 /* basic.jpg */,
+				F18AD5C51CFFDF360027F638 /* sf.jpg */,
 				F18AD5C21CFFD40D0027F638 /* nature.jpg */,
 			);
 			path = Previews;
@@ -407,6 +413,7 @@
 			files = (
 				F14D01AC1C0E72B9001ACD43 /* Main.storyboard in Resources */,
 				F18AD5AC1CFFB50F0027F638 /* contents.json in Resources */,
+				F18AD5C61CFFDF360027F638 /* basic.jpg in Resources */,
 				F18AD5B11CFFB50F0027F638 /* SF13.jpg in Resources */,
 				F18AD5B51CFFB50F0027F638 /* SF2.jpg in Resources */,
 				F18AD5A61CFFB50F0027F638 /* 1080pTestImage.jpg in Resources */,
@@ -431,6 +438,7 @@
 				F18AD5AD1CFFB50F0027F638 /* SF1.jpg in Resources */,
 				F18AD5A71CFFB50F0027F638 /* 2nd1080pImage.jpg in Resources */,
 				F18AD5B61CFFB50F0027F638 /* SF3.jpg in Resources */,
+				F18AD5C71CFFDF360027F638 /* sf.jpg in Resources */,
 				F18AD5AB1CFFB50F0027F638 /* puzzlepacks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
