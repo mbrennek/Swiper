@@ -46,7 +46,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Select Theme"/>
                                 <connections>
-                                    <segue destination="v4N-Xa-dFy" kind="presentation" identifier="selectTheme" id="ES4-MR-cYJ"/>
+                                    <segue destination="BhH-o1-BUf" kind="show" identifier="selectTheme" id="PGK-4h-dUT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,30 +83,65 @@
             </objects>
             <point key="canvasLocation" x="-1507" y="554"/>
         </scene>
-        <!--Theme Selection View Controller-->
-        <scene sceneID="R4z-wd-sUB">
+        <!--Select Theme-->
+        <scene sceneID="n7q-D9-flb">
             <objects>
-                <viewController id="v4N-Xa-dFy" customClass="ThemeSelectionViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TA9-4K-6R3"/>
-                        <viewControllerLayoutGuide type="bottom" id="QGO-uc-nES"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mMD-U8-3vs">
+                <collectionViewController title="Select Theme" id="BhH-o1-BUf" customClass="ThemeSelectionViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ucE-CM-QZH">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nW-0i-FUC">
-                                <rect key="frame" x="901" y="20" width="119" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3qA-4Z-kKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OKT-eJ-Cke">
+                            <size key="itemSize" width="300" height="300"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="themeCell" id="qBS-rb-vfX" customClass="ThemeCell" customModule="Swiper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Yf-Qap">
+                                            <rect key="frame" x="8" y="271" width="284" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RgI-zt-D19">
+                                            <rect key="frame" x="8" y="8" width="284" height="255"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="j66-Yf-Qap" firstAttribute="top" secondItem="RgI-zt-D19" secondAttribute="bottom" constant="8" id="4n1-DV-JkE"/>
+                                    <constraint firstItem="RgI-zt-D19" firstAttribute="top" secondItem="qBS-rb-vfX" secondAttribute="topMargin" id="ITg-F9-qQ0"/>
+                                    <constraint firstItem="j66-Yf-Qap" firstAttribute="leading" secondItem="qBS-rb-vfX" secondAttribute="leadingMargin" id="Wzn-By-999"/>
+                                    <constraint firstItem="j66-Yf-Qap" firstAttribute="trailing" secondItem="qBS-rb-vfX" secondAttribute="trailingMargin" id="Ynt-7H-oDO"/>
+                                    <constraint firstItem="j66-Yf-Qap" firstAttribute="bottom" secondItem="qBS-rb-vfX" secondAttribute="bottomMargin" id="bQu-5u-Qch"/>
+                                    <constraint firstItem="j66-Yf-Qap" firstAttribute="centerX" secondItem="qBS-rb-vfX" secondAttribute="centerX" id="dUP-ai-Vph"/>
+                                    <constraint firstItem="RgI-zt-D19" firstAttribute="trailing" secondItem="qBS-rb-vfX" secondAttribute="trailingMargin" id="jBE-fc-87j"/>
+                                    <constraint firstItem="RgI-zt-D19" firstAttribute="leading" secondItem="qBS-rb-vfX" secondAttribute="leadingMargin" id="qbd-KO-xHo"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="preview" destination="RgI-zt-D19" id="WIP-Zi-tHX"/>
+                                    <outlet property="title" destination="j66-Yf-Qap" id="lKI-hq-ZzA"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="BhH-o1-BUf" id="Qqa-L7-Dfv"/>
+                            <outlet property="delegate" destination="BhH-o1-BUf" id="KT0-A9-e5T"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPs-qM-tFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1507" y="1901"/>
+            <point key="canvasLocation" x="-1507" y="1852"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="dEh-eV-dlg">
@@ -127,6 +162,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mcy-ch-NBq"/>
+        <segue reference="pJJ-t4-TfA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,13 +1,16 @@
 [
 {
   "bundlestring" : "basic",
-  "contents" : "BasicPuzzles/contents.json"
+  "contents" : "BasicPuzzles/contents.json",
+  "title" : "Included Puzzles"
 },{
   "bundlestring" : "sf",
-  "contents" : "SFPuzzles/contents.json"
+  "contents" : "SFPuzzles/contents.json",
+  "title" : "San Francisco"
 },{
   "bundlestring" : "nature",
-  "contents" : "NaturePuzzles/contents.json"
+  "contents" : "NaturePuzzles/contents.json",
+  "title" : "Nature Puzzles"
 }
 ]
 

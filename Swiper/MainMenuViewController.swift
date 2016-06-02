@@ -57,6 +57,10 @@ class MainMenuViewController: UIViewController {
 
             NSUserDefaults.standardUserDefaults().setValue(difficulty.rawValue, forKey: "gameDifficulty")
         }
+
+        if let themeController = segue.destinationViewController as? ThemeSelectionViewController {
+            themeController.delegate = self
+        }
     }
 
     func currentTheme() -> String? {

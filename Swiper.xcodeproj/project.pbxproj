@@ -44,6 +44,8 @@
 		F18AD5BB1CFFB50F0027F638 /* SF8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5A41CFFB50F0027F638 /* SF8.jpg */; settings = {ASSET_TAGS = (sf, ); }; };
 		F18AD5BC1CFFB50F0027F638 /* SF9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5A51CFFB50F0027F638 /* SF9.jpg */; settings = {ASSET_TAGS = (sf, ); }; };
 		F18AD5BE1CFFB9BA0027F638 /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AD5BD1CFFB9BA0027F638 /* ThemeSelectionViewController.swift */; };
+		F18AD5C01CFFC9760027F638 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AD5BF1CFFC9760027F638 /* ThemeCell.swift */; };
+		F18AD5C31CFFD40D0027F638 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F18AD5C21CFFD40D0027F638 /* nature.jpg */; };
 		F191D1B61C7D4A320093398A /* SwipeGameTileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */; };
 		F1A3714A1CDAE1CC00E3929A /* UIImage+Grayscale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A371491CDAE1CC00E3929A /* UIImage+Grayscale.swift */; };
 		F1EFB6F51CC85B4D0075FF37 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */; };
@@ -112,6 +114,8 @@
 		F18AD5A41CFFB50F0027F638 /* SF8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SF8.jpg; sourceTree = "<group>"; };
 		F18AD5A51CFFB50F0027F638 /* SF9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SF9.jpg; sourceTree = "<group>"; };
 		F18AD5BD1CFFB9BA0027F638 /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
+		F18AD5BF1CFFC9760027F638 /* ThemeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		F18AD5C21CFFD40D0027F638 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
 		F191D1B51C7D4A320093398A /* SwipeGameTileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeGameTileTests.swift; sourceTree = "<group>"; };
 		F1A371491CDAE1CC00E3929A /* UIImage+Grayscale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscale.swift"; sourceTree = "<group>"; };
 		F1EFB6F31CC85B4D0075FF37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendor/Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -182,6 +186,7 @@
 				F13C8C6C1C46044E004C5B83 /* SwipeGameState.swift */,
 				F183E2E21CB5EA5B00A589B4 /* MainMenuViewController.swift */,
 				F18AD5BD1CFFB9BA0027F638 /* ThemeSelectionViewController.swift */,
+				F18AD5BF1CFFC9760027F638 /* ThemeCell.swift */,
 				F10EAF761C6AD2A800BD24AB /* SwipeGameTile.swift */,
 				F10EAF781C6AD93900BD24AB /* UIImage+Crop.swift */,
 				F10EAF7A1C6AF4EE00BD24AB /* UIImage+ColorOverlay.swift */,
@@ -263,6 +268,14 @@
 			path = SFPuzzles;
 			sourceTree = "<group>";
 		};
+		F18AD5C11CFFD40D0027F638 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				F18AD5C21CFFD40D0027F638 /* nature.jpg */,
+			);
+			path = Previews;
+			sourceTree = "<group>";
+		};
 		F1EFB6F21CC85B350075FF37 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +288,7 @@
 		F1EFB6F71CC8642A0075FF37 /* Raw Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F18AD5C11CFFD40D0027F638 /* Previews */,
 				F18AD58B1CFFB50F0027F638 /* Puzzles */,
 			);
 			path = "Raw Assets";
@@ -409,6 +423,7 @@
 				F18AD5AA1CFFB50F0027F638 /* N1.jpg in Resources */,
 				F14D01AE1C0E72B9001ACD43 /* Assets.xcassets in Resources */,
 				F18AD5B41CFFB50F0027F638 /* SF16.jpg in Resources */,
+				F18AD5C31CFFD40D0027F638 /* nature.jpg in Resources */,
 				F18AD5B01CFFB50F0027F638 /* SF12.jpg in Resources */,
 				F18AD5B31CFFB50F0027F638 /* SF15.jpg in Resources */,
 				F18AD5B81CFFB50F0027F638 /* SF5.jpg in Resources */,
@@ -446,6 +461,7 @@
 				F14D01A51C0E72B9001ACD43 /* GameScene.swift in Sources */,
 				F10EAF771C6AD2A800BD24AB /* SwipeGameTile.swift in Sources */,
 				F14D01A71C0E72B9001ACD43 /* GameViewController.swift in Sources */,
+				F18AD5C01CFFC9760027F638 /* ThemeCell.swift in Sources */,
 				F14D01A11C0E72B9001ACD43 /* AppDelegate.swift in Sources */,
 				F13C8C6D1C46044E004C5B83 /* SwipeGameState.swift in Sources */,
 				F1FCB9B41CB5F7A00096AE6D /* GameDifficulty.swift in Sources */,
