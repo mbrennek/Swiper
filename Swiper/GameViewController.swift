@@ -12,8 +12,8 @@ import Crashlytics
 
 class GameViewController: UIViewController {
     var difficulty = GameDifficulty.Beginner
-    var bundledResourceRequest : NSBundleResourceRequest?
-    var bundledResourcesAvailable = false
+    var basicResourceRequest : NSBundleResourceRequest?
+    var basicResourcesAvailable = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +21,15 @@ class GameViewController: UIViewController {
         // TODO: probably not the right place to be managing resource requests
         // TODO: get the tag of the currently selected resource
         // TODO: conditionally check if the resource is available first, show a loading screen if it isn't
-        bundledResourceRequest = NSBundleResourceRequest.init(tags: [ "bundled", "nature", "sanfran" ])
-        bundledResourceRequest?.beginAccessingResourcesWithCompletionHandler({ (error) in
+        basicResourceRequest = NSBundleResourceRequest.init(tags: [ "basic", "nature", "sf" ])
+        basicResourceRequest?.beginAccessingResourcesWithCompletionHandler({ (error) in
             if let error = error {
                 // TODO: handle Error
                 Crashlytics.self().recordError(error)
                 print(error)
             } else {
-                self.bundledResourcesAvailable = true
-                let images = self.bundledResourceRequest?.bundle.pathsForResourcesOfType("jpg", inDirectory: nil)
+                self.basicResourcesAvailable = true
+                let images = self.basicResourceRequest?.bundle.pathsForResourcesOfType("jpg", inDirectory: nil)
 
                 if let scene = GameScene(fileNamed: "GameScene"), images = images where images.count > 0 {
                     let index = Int(arc4random_uniform(UInt32(images.count)))
@@ -51,11 +51,5 @@ class GameViewController: UIViewController {
                 }
             }
         })
-    }
-
-    deinit {
-        if (bundledResourcesAvailable) {
-            bundledResourceRequest?.endAccessingResources()
-        }
     }
 }

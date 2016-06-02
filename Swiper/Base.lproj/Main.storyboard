@@ -46,7 +46,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Select Theme"/>
                                 <connections>
-                                    <segue destination="v4N-Xa-dFy" kind="presentation" id="ES4-MR-cYJ"/>
+                                    <segue destination="v4N-Xa-dFy" kind="presentation" identifier="selectTheme" id="ES4-MR-cYJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="-1507" y="554"/>
         </scene>
-        <!--View Controller-->
+        <!--Theme Selection View Controller-->
         <scene sceneID="R4z-wd-sUB">
             <objects>
-                <viewController id="v4N-Xa-dFy" sceneMemberID="viewController">
+                <viewController id="v4N-Xa-dFy" customClass="ThemeSelectionViewController" customModule="Swiper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TA9-4K-6R3"/>
                         <viewControllerLayoutGuide type="bottom" id="QGO-uc-nES"/>
@@ -127,6 +127,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y52-wx-dr9"/>
+        <segue reference="pJJ-t4-TfA"/>
     </inferredMetricsTieBreakers>
 </document>

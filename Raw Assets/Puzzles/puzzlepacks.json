@@ -1,0 +1,13 @@
+[
+{
+  "bundlestring" : "basic",
+  "contents" : "BasicPuzzles/contents.json"
+},{
+  "bundlestring" : "sf",
+  "contents" : "SFPuzzles/contents.json"
+},{
+  "bundlestring" : "nature",
+  "contents" : "NaturePuzzles/contents.json"
+}
+]
+

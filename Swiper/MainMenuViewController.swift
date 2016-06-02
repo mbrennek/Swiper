@@ -38,14 +38,15 @@ class MainMenuViewController: UIViewController {
         guard let identifier = segue.identifier else {
             return
         }
-        let gameController = segue.destinationViewController as? GameViewController
-        let possibleDifficulty = GameDifficulty(rawValue: identifier)
-        guard let difficulty = possibleDifficulty else {
-            return
+
+        if let gameController = segue.destinationViewController as? GameViewController {
+            guard let difficulty = GameDifficulty(rawValue: identifier) else {
+                return
+            }
+
+            gameController.difficulty = difficulty
+
+            NSUserDefaults.standardUserDefaults().setValue(difficulty.rawValue, forKey: "gameDifficulty")
         }
-
-        gameController?.difficulty = difficulty
-
-        NSUserDefaults.standardUserDefaults().setValue(difficulty.rawValue, forKey: "gameDifficulty")
     }
 }

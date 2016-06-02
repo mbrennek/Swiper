@@ -9,9 +9,9 @@
 import Foundation
 
 enum GameDifficulty: String {
-    case Beginner = "beginnerSegue"
-    case Intermediate = "intermediateSegue"
-    case Advanced = "advancedSegue"
+    case Beginner = "beginner"
+    case Intermediate = "intermediate"
+    case Advanced = "advanced"
 
     func rows() -> Int {
         switch self {
