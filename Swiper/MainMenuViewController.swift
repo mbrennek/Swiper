@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Crashlytics
 
 class MainMenuViewController: UIViewController {
 
     @IBOutlet var beginnerButton : UIButton?
     @IBOutlet var intermediateButton : UIButton?
     @IBOutlet var advancedButon : UIButton?
+    var themeBundle : NSBundleResourceRequest?
 
     override var preferredFocusedView: UIView? {
         var preferredFocusedView : UIView?
@@ -34,6 +36,12 @@ class MainMenuViewController: UIViewController {
         return preferredFocusedView ?? beginnerButton
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.requestThemeBundle(self.currentTheme())
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let identifier = segue.identifier else {
             return
@@ -45,8 +53,30 @@ class MainMenuViewController: UIViewController {
             }
 
             gameController.difficulty = difficulty
+            gameController.selectedTheme = self.currentTheme()
 
             NSUserDefaults.standardUserDefaults().setValue(difficulty.rawValue, forKey: "gameDifficulty")
         }
+    }
+
+    func currentTheme() -> String? {
+        return NSUserDefaults.standardUserDefaults().objectForKey("selectedTheme") as? String
+    }
+
+    func requestThemeBundle(theme: String?) {
+        themeBundle = NSBundleResourceRequest.init(tags: Set([ "basic", theme ].flatMap({$0})))
+        themeBundle?.beginAccessingResourcesWithCompletionHandler({ (error) in
+            if let error = error {
+                Crashlytics.self().recordError(error)
+                print(error)
+            }
+        })
+    }
+}
+
+extension MainMenuViewController: ThemeSelectedProtocol {
+    func selectedTheme(theme: String) {
+        NSUserDefaults.standardUserDefaults().setValue(theme, forKey: "selectedTheme")
+        self.requestThemeBundle(theme)
     }
 }

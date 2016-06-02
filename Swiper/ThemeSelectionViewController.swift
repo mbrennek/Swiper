@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ThemeSelectedProtocol {
+    func selectedTheme(theme: String)
+}
+
 class ThemeSelectionViewController : UIViewController {
     
 }

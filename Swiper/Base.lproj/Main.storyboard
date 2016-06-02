@@ -22,7 +22,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Beginner"/>
                                 <connections>
-                                    <segue destination="499-42-d0g" kind="presentation" identifier="beginnerSegue" id="y52-wx-dr9"/>
+                                    <segue destination="499-42-d0g" kind="presentation" identifier="beginner" id="y52-wx-dr9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTp-ae-9gU">
@@ -30,7 +30,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Intermediate"/>
                                 <connections>
-                                    <segue destination="499-42-d0g" kind="presentation" identifier="intermediateSegue" id="pJJ-t4-TfA"/>
+                                    <segue destination="499-42-d0g" kind="presentation" identifier="intermediate" id="pJJ-t4-TfA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at1-xP-2Jn">
@@ -38,7 +38,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Advanced"/>
                                 <connections>
-                                    <segue destination="499-42-d0g" kind="presentation" identifier="advancedSegue" id="mcy-ch-NBq"/>
+                                    <segue destination="499-42-d0g" kind="presentation" identifier="advanced" id="mcy-ch-NBq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHK-yM-tO8">
@@ -127,6 +127,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pJJ-t4-TfA"/>
+        <segue reference="mcy-ch-NBq"/>
     </inferredMetricsTieBreakers>
 </document>

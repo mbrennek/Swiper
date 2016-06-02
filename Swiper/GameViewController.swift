@@ -13,22 +13,19 @@ import Crashlytics
 class GameViewController: UIViewController {
     var difficulty = GameDifficulty.Beginner
     var basicResourceRequest : NSBundleResourceRequest?
-    var basicResourcesAvailable = false
+    var selectedTheme : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TODO: probably not the right place to be managing resource requests
-        // TODO: get the tag of the currently selected resource
         // TODO: conditionally check if the resource is available first, show a loading screen if it isn't
-        basicResourceRequest = NSBundleResourceRequest.init(tags: [ "basic", "nature", "sf" ])
+        basicResourceRequest = NSBundleResourceRequest.init(tags: [ selectedTheme ?? "basic" ])
         basicResourceRequest?.beginAccessingResourcesWithCompletionHandler({ (error) in
             if let error = error {
                 // TODO: handle Error
                 Crashlytics.self().recordError(error)
                 print(error)
             } else {
-                self.basicResourcesAvailable = true
                 let images = self.basicResourceRequest?.bundle.pathsForResourcesOfType("jpg", inDirectory: nil)
 
                 if let scene = GameScene(fileNamed: "GameScene"), images = images where images.count > 0 {
