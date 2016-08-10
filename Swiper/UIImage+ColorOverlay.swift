@@ -24,19 +24,19 @@ extension UIImage {
         let context = UIGraphicsGetCurrentContext()
 
         // flip orientation
-        CGContextTranslateCTM(context, 0.0, self.size.height)
-        CGContextScaleCTM(context, 1.0, -1.0)
+        CGContextTranslateCTM(context!, 0.0, self.size.height)
+        CGContextScaleCTM(context!, 1.0, -1.0)
 
         // set overlay
-        CGContextSetBlendMode(context, .HardLight)
-        CGContextClipToMask(context, rect, self.CGImage)
-        CGContextSetFillColorWithColor(context, colorOverlay.CGColor)
-        CGContextFillRect(context, rect)
+        CGContextSetBlendMode(context!, .HardLight)
+        CGContextClipToMask(context!, rect, self.CGImage!)
+        CGContextSetFillColorWithColor(context!, colorOverlay.CGColor)
+        CGContextFillRect(context!, rect)
 
         let returnImage = UIGraphicsGetImageFromCurrentImageContext()
 
         UIGraphicsEndImageContext()
 
-        return returnImage
+        return returnImage!
     }
 }

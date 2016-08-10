@@ -23,10 +23,10 @@ extension UIImage {
 
         // Draw image into current context, with specified rectangle
         // using previously defined context (with grayscale colorspace)
-        CGContextDrawImage(context, imageRect, self.CGImage)
+        CGContextDrawImage(context!, imageRect, self.CGImage!)
 
         // Create bitmap image info from pixel data in current context
-        let imageRef = CGBitmapContextCreateImage(context)
+        let imageRef = CGBitmapContextCreateImage(context!)
 
         // Return a new UIImage object
         return UIImage.init(CGImage: imageRef!)
