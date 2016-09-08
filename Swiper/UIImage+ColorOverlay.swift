@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    func imageWithColorOverlay(_ colorOverlay: UIColor) -> UIImage
+    func imageWithColorOverlay(_ colorOverlay: UIColor) -> UIImage?
     {
         // create drawing context
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
@@ -21,22 +21,21 @@ extension UIImage {
         let rect = CGRect(origin: .zero, size: self.size)
 
         // get drawing context
-        let context = UIGraphicsGetCurrentContext()
+        if let context = UIGraphicsGetCurrentContext() {
+            // flip orientation
+            context.translateBy(x: 0.0, y: self.size.height)
+            context.scaleBy(x: 1.0, y: -1.0)
 
-        // flip orientation
-        context!.translateBy(x: 0.0, y: self.size.height)
-        context!.scaleBy(x: 1.0, y: -1.0)
-
-        // set overlay
-        context!.setBlendMode(.hardLight)
-        context!.clip(to: rect, mask: self.cgImage!)
-        context!.setFillColor(colorOverlay.cgColor)
-        context!.fill(rect)
-
+            // set overlay
+            context.setBlendMode(.hardLight)
+            context.clip(to: rect, mask: self.cgImage!)
+            context.setFillColor(colorOverlay.cgColor)
+            context.fill(rect)
+        }
         let returnImage = UIGraphicsGetImageFromCurrentImageContext()
 
         UIGraphicsEndImageContext()
 
-        return returnImage!
+        return returnImage
     }
 }

@@ -197,7 +197,7 @@ class GameScene: SKScene {
         gameData.append(nil)
         let newGameState = try! SwipeGameState<SwipeGameTile>(rows: difficulty.rows(), columns: difficulty.columns(), data: gameData)
 
-        let backgroundTexture = SKTexture(image: image.grayscaleImage().imageWithColorOverlay(.white))
+        let backgroundTexture = SKTexture(image: image.grayscaleImage()!.imageWithColorOverlay(.white)!)
         let backgroundNode = SKSpriteNode(texture: backgroundTexture)
         backgroundNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         backgroundNode.zPosition = -1
