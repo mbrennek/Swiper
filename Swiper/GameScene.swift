@@ -29,25 +29,25 @@ class GameScene: SKScene {
     }
     var imageName = "1080pTestImage"
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
 
         gameStates.append(self.loadNewGame())
         self.resetBoardLocations()
 
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeUp)
-        swipeUpRecognizer.direction = .Up
+        swipeUpRecognizer.direction = .up
         self.view?.addGestureRecognizer(swipeUpRecognizer)
 
         let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeDown)
-        swipeDownRecognizer.direction = .Down
+        swipeDownRecognizer.direction = .down
         self.view?.addGestureRecognizer(swipeDownRecognizer)
 
         let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeLeft)
-        swipeLeftRecognizer.direction = .Left
+        swipeLeftRecognizer.direction = .left
         self.view?.addGestureRecognizer(swipeLeftRecognizer)
 
         let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: .swipeRight)
-        swipeRightRecognizer.direction = .Right
+        swipeRightRecognizer.direction = .right
         self.view?.addGestureRecognizer(swipeRightRecognizer)
 
         let resetRecognizer = UITapGestureRecognizer(target: self, action: .doubleTap)
@@ -56,7 +56,7 @@ class GameScene: SKScene {
     }
 
     func resetBoardLocations() {
-        self.removeChildrenInArray(nodes)
+        self.removeChildren(in: nodes)
         nodes.removeAll()
 
         guard let gameState = gameStates.last else {
@@ -95,7 +95,7 @@ class GameScene: SKScene {
         }
     }
 
-    func updateBoardLocations(potentialState: SwipeGameState<SwipeGameTile>) {
+    func updateBoardLocations(_ potentialState: SwipeGameState<SwipeGameTile>) {
         guard let lastState = gameStates.last else {
             return
         }
@@ -112,8 +112,8 @@ class GameScene: SKScene {
 
             let newPosition = self.positionOf(row: row, column: column, inFrame: self.frame)
 
-            let moveAction = SKAction.moveTo(newPosition, duration: NSTimeInterval(0.2))
-            node?.runAction(moveAction, completion: {
+            let moveAction = SKAction.move(to: newPosition, duration: TimeInterval(0.2))
+            node?.run(moveAction, completion: {
                 if potentialState.won() {
                     self.resetBoardLocations()
                 }
@@ -122,35 +122,35 @@ class GameScene: SKScene {
 
     }
 
-    func swipeUp(recognizer: UISwipeGestureRecognizer) {
+    func swipeUp(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(lastState.swipeUp())
     }
 
-    func swipeDown(recognizer: UISwipeGestureRecognizer) {
+    func swipeDown(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(lastState.swipeDown())
     }
 
-    func swipeLeft(recognizer: UISwipeGestureRecognizer) {
+    func swipeLeft(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(lastState.swipeLeft())
     }
 
-    func swipeRight(recognizer: UISwipeGestureRecognizer) {
+    func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(lastState.swipeRight())
     }
 
-    func doubleTap(recognizer: UITapGestureRecognizer) {
+    func doubleTap(_ recognizer: UITapGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
@@ -163,7 +163,7 @@ class GameScene: SKScene {
         if gameStates.count < 2 {
             return
         }
-        let previousState = gameStates[gameStates.endIndex.predecessor().predecessor()]
+        let previousState = gameStates[((gameStates.endIndex - 1) - 1)]
         self.updateBoardLocations(previousState)
         gameStates.removeLast()
         gameStates.removeLast()
@@ -172,7 +172,10 @@ class GameScene: SKScene {
     func loadNewGame() -> SwipeGameState<SwipeGameTile> {
         self.removeAllChildren()
 
-        let image = UIImage(imageLiteral: imageName)
+        guard let image = UIImage(named: imageName) else {
+            return try! SwipeGameState<SwipeGameTile>(rows: difficulty.rows(), columns: difficulty.columns(), data: [])
+        }
+
         var gameData : [SwipeGameTile?] = []
         for i in 0 ..< difficulty.rows() {
             for j in 0 ..< difficulty.columns() {
@@ -194,7 +197,7 @@ class GameScene: SKScene {
         gameData.append(nil)
         let newGameState = try! SwipeGameState<SwipeGameTile>(rows: difficulty.rows(), columns: difficulty.columns(), data: gameData)
 
-        let backgroundTexture = SKTexture(image: image.grayscaleImage().imageWithColorOverlay(.whiteColor()))
+        let backgroundTexture = SKTexture(image: image.grayscaleImage().imageWithColorOverlay(.white))
         let backgroundNode = SKSpriteNode(texture: backgroundTexture)
         backgroundNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         backgroundNode.zPosition = -1
@@ -203,7 +206,7 @@ class GameScene: SKScene {
         return newGameState.randomize()
     }
 
-    func positionOf(row row: Int, column: Int, inFrame frame: CGRect) -> CGPoint {
+    func positionOf(row: Int, column: Int, inFrame frame: CGRect) -> CGPoint {
         let tileHeight = Int(frame.height) / difficulty.rows()
         let tileWidth = Int(frame.width) / difficulty.columns()
 

@@ -18,7 +18,7 @@ class MainMenuViewController: UIViewController {
 
     override var preferredFocusedView: UIView? {
         var preferredFocusedView : UIView?
-        let difficulty : String? = NSUserDefaults.standardUserDefaults().objectForKey("gameDifficulty") as? String
+        let difficulty : String? = UserDefaults.standard.object(forKey: "gameDifficulty") as? String
 
         if let difficulty = difficulty {
             if let gameDifficulty = GameDifficulty(rawValue: difficulty) {
@@ -42,12 +42,12 @@ class MainMenuViewController: UIViewController {
         self.requestThemeBundle(self.currentTheme())
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             return
         }
 
-        if let gameController = segue.destinationViewController as? GameViewController {
+        if let gameController = segue.destination as? GameViewController {
             guard let difficulty = GameDifficulty(rawValue: identifier) else {
                 return
             }
@@ -55,21 +55,21 @@ class MainMenuViewController: UIViewController {
             gameController.difficulty = difficulty
             gameController.selectedTheme = self.currentTheme()
 
-            NSUserDefaults.standardUserDefaults().setValue(difficulty.rawValue, forKey: "gameDifficulty")
+            UserDefaults.standard.setValue(difficulty.rawValue, forKey: "gameDifficulty")
         }
 
-        if let themeController = segue.destinationViewController as? ThemeSelectionViewController {
+        if let themeController = segue.destination as? ThemeSelectionViewController {
             themeController.delegate = self
         }
     }
 
     func currentTheme() -> String? {
-        return NSUserDefaults.standardUserDefaults().objectForKey("selectedTheme") as? String
+        return UserDefaults.standard.object(forKey: "selectedTheme") as? String
     }
 
-    func requestThemeBundle(theme: String?) {
+    func requestThemeBundle(_ theme: String?) {
         themeBundle = NSBundleResourceRequest.init(tags: Set([ "basic", theme ].flatMap({$0})))
-        themeBundle?.beginAccessingResourcesWithCompletionHandler({ (error) in
+        themeBundle?.beginAccessingResources(completionHandler: { (error) in
             if let error = error {
                 Crashlytics.self().recordError(error)
                 print(error)
@@ -79,8 +79,8 @@ class MainMenuViewController: UIViewController {
 }
 
 extension MainMenuViewController: ThemeSelectedProtocol {
-    func selectedTheme(theme: String) {
-        NSUserDefaults.standardUserDefaults().setValue(theme, forKey: "selectedTheme")
+    func selectedTheme(_ theme: String) {
+        UserDefaults.standard.setValue(theme, forKey: "selectedTheme")
         self.requestThemeBundle(theme)
     }
 }

@@ -19,16 +19,16 @@ extension UIImage {
         let colorSpace = CGColorSpaceCreateDeviceGray()
 
         // Create bitmap content with current image size and grayscale colorspace
-        let context = CGBitmapContextCreate(nil, Int(self.size.width), Int(self.size.height), 8, 0, colorSpace, CGImageAlphaInfo.None.rawValue)
+        let context = CGContext(data: nil, width: Int(self.size.width), height: Int(self.size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: CGImageAlphaInfo.none.rawValue)
 
         // Draw image into current context, with specified rectangle
         // using previously defined context (with grayscale colorspace)
-        CGContextDrawImage(context!, imageRect, self.CGImage!)
+        context!.draw(self.cgImage!, in: imageRect)
 
         // Create bitmap image info from pixel data in current context
-        let imageRef = CGBitmapContextCreateImage(context!)
+        let imageRef = context!.makeImage()
 
         // Return a new UIImage object
-        return UIImage.init(CGImage: imageRef!)
+        return UIImage.init(cgImage: imageRef!)
     }
 }

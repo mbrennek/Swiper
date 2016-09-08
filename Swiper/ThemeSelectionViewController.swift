@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ThemeSelectedProtocol {
-    func selectedTheme(theme: String)
+    func selectedTheme(_ theme: String)
 }
 
 class ThemeSelectionViewController : UICollectionViewController {
@@ -23,33 +23,33 @@ class ThemeSelectionViewController : UICollectionViewController {
     }
 
     func populateThemes() {
-        guard let tableDataURL = NSBundle.mainBundle().URLForResource("puzzlepacks", withExtension: "json") else {
+        guard let tableDataURL = Bundle.main.url(forResource: "puzzlepacks", withExtension: "json") else {
             return
         }
-        guard let tableData = NSData(contentsOfURL: tableDataURL) else {
+        guard let tableData = try? Data(contentsOf: tableDataURL) else {
             return
         }
-        dataModel = try? NSJSONSerialization.JSONObjectWithData(tableData, options: .AllowFragments) as! Array<[String:String]>
+        dataModel = try? JSONSerialization.jsonObject(with: tableData, options: .allowFragments) as! Array<[String:String]>
     }
 
-    override func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
-        return NSIndexPath(forItem: 0, inSection: 0)
+    override func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
+        return IndexPath(item: 0, section: 0)
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataModel?.count ?? 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("themeCell", forIndexPath: indexPath)
-        if let themeCell = cell as? ThemeCell, themeData = self.dataModel?[indexPath.row] {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "themeCell", for: indexPath)
+        if let themeCell = cell as? ThemeCell, let themeData = self.dataModel?[(indexPath as NSIndexPath).row] {
             themeCell.title?.text = themeData["title"]
-            if let imageURL = NSBundle.mainBundle().URLForResource(themeData["bundlestring"], withExtension: "jpg") {
-                let imageData = NSData(contentsOfURL: imageURL)
+            if let imageURL = Bundle.main.url(forResource: themeData["bundlestring"], withExtension: "jpg") {
+                let imageData = try? Data(contentsOf: imageURL)
                 themeCell.preview?.image = UIImage(data: imageData!)
             }
         }
@@ -57,12 +57,12 @@ class ThemeSelectionViewController : UICollectionViewController {
         return cell
     }
 
-    override func collectionView(collectionView: UICollectionView, canFocusItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        guard let theme = self.dataModel?[indexPath.row] else {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let theme = self.dataModel?[(indexPath as NSIndexPath).row] else {
             return
         }
         guard let themeId = theme["bundlestring"] else {

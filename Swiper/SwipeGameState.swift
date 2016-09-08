@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum GameStateError: ErrorType {
-    case IncorrectCountOfDataElements
-    case NoEmptyTile
-    case TooManyEmptyTiles
+enum GameStateError: Error {
+    case incorrectCountOfDataElements
+    case noEmptyTile
+    case tooManyEmptyTiles
 }
 
 struct SwipeGameState<DataType : Comparable> {
@@ -25,7 +25,7 @@ struct SwipeGameState<DataType : Comparable> {
         self.data = data
 
         if data.count != rows * columns {
-            throw GameStateError.IncorrectCountOfDataElements
+            throw GameStateError.incorrectCountOfDataElements
         }
 
         var blanksFound = 0
@@ -36,11 +36,11 @@ struct SwipeGameState<DataType : Comparable> {
         }
 
         if blanksFound < 1 {
-            throw GameStateError.NoEmptyTile
+            throw GameStateError.noEmptyTile
         }
 
         if blanksFound > 1 {
-            throw GameStateError.TooManyEmptyTiles
+            throw GameStateError.tooManyEmptyTiles
         }
 
     }
@@ -95,7 +95,7 @@ struct SwipeGameState<DataType : Comparable> {
         return self
     }
 
-    func tap(indexToMove: Int) -> SwipeGameState<DataType> {
+    func tap(_ indexToMove: Int) -> SwipeGameState<DataType> {
         let indexOfBlank = blankIndex()
         var valid = false
 
@@ -127,12 +127,12 @@ struct SwipeGameState<DataType : Comparable> {
     }
 
     func blankIndex() -> Int {
-        return data.indexOf({$0 == nil})!
+        return data.index(where: {$0 == nil})!
     }
 
     func won() -> Bool {
         for index in 0 ..< data.count - 1 {
-            if let left = data[index], right = data[index + 1] where left > right {
+            if let left = data[index], let right = data[index + 1] , left > right {
                 return false
             }
         }

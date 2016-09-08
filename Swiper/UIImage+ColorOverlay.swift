@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIImage {
-    func imageWithColorOverlay(colorOverlay: UIColor) -> UIImage
+    func imageWithColorOverlay(_ colorOverlay: UIColor) -> UIImage
     {
         // create drawing context
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
 
         // draw current image
-        self.drawAtPoint(.zero)
+        self.draw(at: .zero)
 
         // determine bounding box of current image
         let rect = CGRect(origin: .zero, size: self.size)
@@ -24,14 +24,14 @@ extension UIImage {
         let context = UIGraphicsGetCurrentContext()
 
         // flip orientation
-        CGContextTranslateCTM(context!, 0.0, self.size.height)
-        CGContextScaleCTM(context!, 1.0, -1.0)
+        context!.translateBy(x: 0.0, y: self.size.height)
+        context!.scaleBy(x: 1.0, y: -1.0)
 
         // set overlay
-        CGContextSetBlendMode(context!, .HardLight)
-        CGContextClipToMask(context!, rect, self.CGImage!)
-        CGContextSetFillColorWithColor(context!, colorOverlay.CGColor)
-        CGContextFillRect(context!, rect)
+        context!.setBlendMode(.hardLight)
+        context!.clip(to: rect, mask: self.cgImage!)
+        context!.setFillColor(colorOverlay.cgColor)
+        context!.fill(rect)
 
         let returnImage = UIGraphicsGetImageFromCurrentImageContext()
 
