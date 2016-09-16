@@ -380,6 +380,7 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = ZN8V7F27XZ;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					F14D01B31C0E72B9001ACD43 = {
 						CreatedOnToolsVersion = 7.1;
@@ -621,6 +622,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZN8V7F27XZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor",
@@ -642,6 +644,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZN8V7F27XZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor",
