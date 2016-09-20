@@ -95,7 +95,7 @@ class GameScene: SKScene {
         }
     }
 
-    func updateBoardLocations(_ potentialState: SwipeGameState<SwipeGameTile>) {
+    func updateBoardLocations(to potentialState: SwipeGameState<SwipeGameTile>) {
         guard let lastState = gameStates.last else {
             return
         }
@@ -126,28 +126,28 @@ class GameScene: SKScene {
         guard let lastState = gameStates.last else {
             return
         }
-        self.updateBoardLocations(lastState.swipeUp())
+        self.updateBoardLocations(to: lastState.swipeUp())
     }
 
     func swipeDown(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
-        self.updateBoardLocations(lastState.swipeDown())
+        self.updateBoardLocations(to: lastState.swipeDown())
     }
 
     func swipeLeft(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
-        self.updateBoardLocations(lastState.swipeLeft())
+        self.updateBoardLocations(to: lastState.swipeLeft())
     }
 
     func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
-        self.updateBoardLocations(lastState.swipeRight())
+        self.updateBoardLocations(to: lastState.swipeRight())
     }
 
     func doubleTap(_ recognizer: UITapGestureRecognizer) {
@@ -164,7 +164,7 @@ class GameScene: SKScene {
             return
         }
         let previousState = gameStates[((gameStates.endIndex - 1) - 1)]
-        self.updateBoardLocations(previousState)
+        self.updateBoardLocations(to: previousState)
         gameStates.removeLast()
         gameStates.removeLast()
     }
