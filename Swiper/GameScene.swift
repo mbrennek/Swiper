@@ -122,35 +122,35 @@ class GameScene: SKScene {
 
     }
 
-    func swipeUp(_ recognizer: UISwipeGestureRecognizer) {
+    @objc func swipeUp(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(to: lastState.swipeUp())
     }
 
-    func swipeDown(_ recognizer: UISwipeGestureRecognizer) {
+    @objc func swipeDown(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(to: lastState.swipeDown())
     }
 
-    func swipeLeft(_ recognizer: UISwipeGestureRecognizer) {
+    @objc func swipeLeft(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(to: lastState.swipeLeft())
     }
 
-    func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
+    @objc func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }
         self.updateBoardLocations(to: lastState.swipeRight())
     }
 
-    func doubleTap(_ recognizer: UITapGestureRecognizer) {
+    @objc func doubleTap(_ recognizer: UITapGestureRecognizer) {
         guard let lastState = gameStates.last else {
             return
         }

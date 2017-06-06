@@ -119,7 +119,7 @@ struct SwipeGameState<DataType : Comparable> {
 
         if valid {
             var replacementData = data
-            swap(&replacementData[indexOfBlank], &replacementData[indexToMove])
+            replacementData.swapAt(indexOfBlank, indexToMove)
             return try! SwipeGameState(rows: rows, columns: columns, data: replacementData)
         }
 
@@ -146,7 +146,7 @@ struct SwipeGameState<DataType : Comparable> {
 
 extension SwipeGameState : Equatable {}
 
-func ==<T : Equatable>(lhs: SwipeGameState<T>, rhs: SwipeGameState<T>) -> Bool {
+func ==<T>(lhs: SwipeGameState<T>, rhs: SwipeGameState<T>) -> Bool {
     if lhs.rows != rhs.rows || lhs.rows != rhs.rows {
         return false
     }
